@@ -44,12 +44,18 @@ repo sync -j"$(nproc)"
 
 # Fetch the pipa device tree and YumeMichi's device-common forks.
 python3 vendor/aospa/build/tools/barista.py aospa_pipa
+
+# Update direct repositories that are already checked out. This matters after
+# YumeMichi pushes updates: barista only syncs new or changed projects.
 repo sync -j"$(nproc)"
 
-source build/envsetup.sh
-lunch aospa_pipa-userdebug
-m
+./rom-build.sh pipa
 ```
+
+`rom-build.sh` runs `lunch aospa_pipa-userdebug` and `m otapackage`; it does
+not run `barista.py`. For a vanilla build use `./rom-build.sh pipa -l`, for GMS
+use `./rom-build.sh pipa -g`. With `-r`, `rom-build.sh` performs a full
+`repo sync` before building.
 
 The default launcher is PenguinOS `Launcher3` (`Launcher3QuickStep`). Pixel
 Launcher is not part of this product.
