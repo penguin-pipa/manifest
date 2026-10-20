@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- PenguinOS fork with the pipa product and device manifest -->
+  <remove-project name="Project-PenguinOS/android_vendor_aospa" />
+  <project path="vendor/aospa"
+           name="penguin-pipa/android_vendor_aospa"
+           remote="github"
+           revision="celerity">
+    <linkfile src="build.sh" dest="rom-build.sh" />
+  </project>
+
+  <!-- PenguinOS hardware/interfaces + kernel_config_t_4.19 -->
+  <remove-project name="Project-PenguinOS/hardware_interfaces" />
+  <project path="hardware/interfaces"
+           name="penguin-pipa/android_hardware_interfaces"
+           remote="github"
+           revision="celerity" />
+</manifest>
