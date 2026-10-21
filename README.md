@@ -44,6 +44,10 @@ repo sync -j"$(nproc)"
 ./rom-build.sh pipa
 ```
 
+In this setup the synced AOSP/PenguinOS tree and the build outputs live on
+the project's build host under `~/penguinos`; this repository only carries
+the manifest overlay. Run the build commands above from that tree.
+
 `rom-build.sh` runs `lunch aospa_pipa-userdebug` and `m otapackage`, which
 produces only the OTA package (`$OUT/PenguinOS-celerity-<date>[-gms]-pipa.zip`,
 a `payload.bin` OTA that is not flashable with `fastboot`). Pass
