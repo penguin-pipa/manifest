@@ -89,7 +89,7 @@ The fastboot package contains `boot`, `dtbo`, `vendor_boot`, `vbmeta`,
 with:
 
 ```bash
-fastboot update -w PenguinOS-celerity-<date>[-gms]-pipa-image.zip
+fastboot -w update PenguinOS-celerity-<date>[-gms]-pipa-image.zip
 ```
 
 `-w` runs the `if-wipe` erases declared in `fastboot-info.txt` and is
