@@ -20,7 +20,6 @@ from YumeMichi's trees:
 - `aospa-pipa/android_kernel_configs`
 - `aospa-pipa/android_hardware_xiaomi`
 - `aospa-pipa/android_hardware_dolby`
-- `aospa-pipa/android_packages_apps_FlipFlap`
 - `aospa-pipa/android_device_qcom_common`
 - `aospa-pipa/android_device_qcom_sepolicy_vndr`
 - `aospa-pipa/android_kernel_build`
@@ -45,8 +44,11 @@ repo sync -j"$(nproc)"
 ./rom-build.sh pipa
 ```
 
-`rom-build.sh` runs `lunch aospa_pipa-userdebug` and `m otapackage`. `lunch`
-automatically invokes `vendor/aospa/build/tools/barista.py`, which creates
+`rom-build.sh` runs `lunch aospa_pipa-userdebug` and `m otapackage`, which
+produces only the OTA package (`$OUT/PenguinOS-celerity-<date>[-gms]-pipa.zip`,
+a `payload.bin` OTA that is not flashable with `fastboot`). Pass
+`-z`/`--imgzip` to also generate the fastboot package. `lunch` automatically
+invokes `vendor/aospa/build/tools/barista.py`, which creates
 `.repo/local_manifests/baristablend.xml` and syncs the pipa device tree,
 YumeMichi's device-common forks and the `calcite-865` HALs. Do not invoke
 barista manually in the normal build flow.
@@ -61,9 +63,37 @@ project that is not checked out yet, so the device tree is never downloaded.
 ./rom-build.sh pipa              # GMS by default
 ./rom-build.sh pipa -l           # vanilla, without GMS
 ./rom-build.sh pipa -g           # GMS, explicit
+./rom-build.sh pipa -z           # OTA + fastboot image zip
 ./rom-build.sh pipa -j"$(nproc)" # explicit job count
 ./rom-build.sh pipa -r           # repo sync before building
 ```
+
+### Packages
+
+Without flags, the build produces only the OTA package:
+
+```text
+out/target/product/pipa/PenguinOS-celerity-<date>[-gms]-pipa.zip
+```
+
+With `-z` the script also runs `img_from_target_files` and writes both
+packages in the repository root:
+
+```text
+PenguinOS-celerity-<date>[-gms]-pipa.zip        # OTA
+PenguinOS-celerity-<date>[-gms]-pipa-image.zip  # fastboot
+```
+
+The fastboot package contains `boot`, `dtbo`, `vendor_boot`, `vbmeta`,
+`vbmeta_system`, `super_empty` and the logical partition images. Flash it
+with:
+
+```bash
+fastboot update -w PenguinOS-celerity-<date>[-gms]-pipa-image.zip
+```
+
+`-w` runs the `if-wipe` erases declared in `fastboot-info.txt` and is
+required when coming from another ROM.
 
 ### Updates
 
