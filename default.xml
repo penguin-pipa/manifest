@@ -61,4 +61,7 @@
   <include name="penguin.xml"/>
   <include name="obsolete.xml"/>
 
+  <!-- PenguinOS for Xiaomi Pad 6 (pipa) -->
+  <include name="pipa.xml"/>
+
 </manifest>

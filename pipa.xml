@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <!-- Frameworks -->
+  <remove-project name="Project-PenguinOS/frameworks_av" />
+  <project path="frameworks/av" name="penguin-pipa/frameworks_av" remote="github" revision="celerity" />
+  <remove-project name="Project-PenguinOS/frameworks_base" />
+  <project path="frameworks/base" name="penguin-pipa/frameworks_base" remote="github" revision="celerity" />
+
+  <!-- Hardware -->
+  <remove-project name="Project-PenguinOS/hardware_interfaces" />
+  <project path="hardware/interfaces" name="penguin-pipa/android_hardware_interfaces" remote="github" revision="celerity" />
+
+  <!-- Packages -->
+  <remove-project name="Project-PenguinOS/packages_apps_LMOFreeform" />
+  <project path="packages/apps/LMOFreeform" name="aospa-pipa/android_packages_apps_LMOFreeform" remote="github" revision="calcite" />
+  <remove-project name="Project-PenguinOS/packages_apps_ThemePicker" />
+  <project path="packages/apps/ThemePicker" name="penguin-pipa/packages_apps_ThemePicker" remote="github" revision="celerity" />
+
+  <!-- System -->
+  <remove-project name="Project-PenguinOS/system_core" />
+  <project path="system/core" name="penguin-pipa/system_core" remote="github" revision="celerity" />
+
+  <!-- Vendor (PenguinOS) -->
+  <remove-project name="Project-PenguinOS/android_vendor_aospa" />
+  <project path="vendor/aospa" name="penguin-pipa/android_vendor_aospa" remote="github" revision="celerity">
+    <linkfile src="build.sh" dest="rom-build.sh" />
+  </project>
+  <remove-project name="Project-PenguinOS/device_qcom_common" />
+  <project path="device/qcom/common" name="penguin-pipa/device_qcom_common" remote="github" revision="celerity">
+    <linkfile dest="vendor/qcom/build/tasks/generate_extra_images.mk" src="generate_extra_images.mk" />
+  </project>
+
+</manifest>
