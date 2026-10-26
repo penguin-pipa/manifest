@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
 
+  <!-- Device -->
+  <remove-project name="AOSPA/android_kernel_configs" />
+  <project path="kernel/configs" name="aospa-pipa/android_kernel_configs" remote="github" revision="calcite" />
+  <remove-project name="AOSPA/android_device_qcom_sepolicy_vndr" />
+  <project path="device/qcom/sepolicy_vndr" name="aospa-pipa/android_device_qcom_sepolicy_vndr" remote="github" revision="calcite" />
+  <remove-project name="AOSPA/android_kernel_build" />
+  <project path="device/qcom/kernelscripts" name="aospa-pipa/android_kernel_build" remote="github" revision="calcite">
+    <linkfile dest="vendor/qcom/build/tasks/kernel_definitions.mk" src="kernel_definitions.mk" />
+  </project>
+
   <!-- Frameworks -->
   <remove-project name="Project-PenguinOS/frameworks_av" />
   <project path="frameworks/av" name="penguin-pipa/frameworks_av" remote="github" revision="celerity" />
@@ -12,6 +22,7 @@
   <project path="hardware/interfaces" name="penguin-pipa/android_hardware_interfaces" remote="github" revision="celerity" />
 
   <!-- Packages -->
+  <project path="packages/apps/FlipFlap" name="aospa-pipa/android_packages_apps_FlipFlap" remote="github" revision="calcite" />
   <remove-project name="Project-PenguinOS/packages_apps_LMOFreeform" />
   <project path="packages/apps/LMOFreeform" name="aospa-pipa/android_packages_apps_LMOFreeform" remote="github" revision="calcite" />
   <remove-project name="Project-PenguinOS/packages_apps_ThemePicker" />
@@ -30,5 +41,11 @@
   <project path="device/qcom/common" name="penguin-pipa/device_qcom_common" remote="github" revision="celerity">
     <linkfile dest="vendor/qcom/build/tasks/generate_extra_images.mk" src="generate_extra_images.mk" />
   </project>
+
+  <!-- Vendor (QCOM) -->
+  <remove-project name="Project-PenguinOS/vendor_qcom_opensource_power" />
+  <project path="vendor/qcom/opensource/power" name="aospa-pipa/android_vendor_qcom-opensource_power" remote="github" revision="calcite" />
+  <remove-project name="AOSPA/android_vendor_qcom-opensource_usb" />
+  <project path="vendor/qcom/opensource/usb" name="aospa-pipa/android_vendor_qcom-opensource_usb" remote="github" revision="calcite" />
 
 </manifest>
