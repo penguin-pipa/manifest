@@ -27,6 +27,8 @@
   <project path="packages/apps/LMOFreeform" name="aospa-pipa/android_packages_apps_LMOFreeform" remote="github" revision="calcite" />
   <remove-project name="Project-PenguinOS/packages_apps_ThemePicker" />
   <project path="packages/apps/ThemePicker" name="penguin-pipa/packages_apps_ThemePicker" remote="github" revision="celerity" />
+  <remove-project name="Project-PenguinOS/packages_apps_PenguinSetupWizard" />
+  <project path="packages/apps/PenguinSetupWizard" name="penguin-pipa/packages_apps_PenguinSetupWizard" remote="github" revision="celerity" />
 
   <!-- System -->
   <remove-project name="Project-PenguinOS/system_core" />
