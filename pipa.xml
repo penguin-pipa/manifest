@@ -23,8 +23,6 @@
 
   <!-- Packages -->
   <project path="packages/apps/FlipFlap" name="aospa-pipa/android_packages_apps_FlipFlap" remote="github" revision="calcite" />
-  <remove-project name="Project-PenguinOS/packages_apps_LMOFreeform" />
-  <project path="packages/apps/LMOFreeform" name="aospa-pipa/android_packages_apps_LMOFreeform" remote="github" revision="calcite" />
   <remove-project name="Project-PenguinOS/packages_apps_ThemePicker" />
   <project path="packages/apps/ThemePicker" name="penguin-pipa/packages_apps_ThemePicker" remote="github" revision="celerity" />
   <remove-project name="Project-PenguinOS/packages_apps_PenguinSetupWizard" />
